@@ -13,7 +13,7 @@ console.log(i.getAttribute('id'))
 console.log(i.getAttribute('class'))
 
 //setAttribute => change the property of element setAttribute("prop_name","new_val")
-console.log(i.setAttribute('class',"test_the_class"))//value change in element window of browser 
+console.log(i.setAttribute('class',"test_the_class"))//value change in element window of browser, show undefined on console 
 
 //adding css property
 i.style.background="green";
@@ -72,7 +72,8 @@ Use Array.from() if you need to treat it like a real array.
 
 let htmlColl = document.getElementsByClassName('BOX');//this is an html collection not array, when  ElementsByClassName() use remove (.) prefix
 console.log(htmlColl)
-//to use it like array convert it
+
+//to use it like array, we have to convert it
 let htmlArr = Array.from(htmlColl)
 console.log(htmlArr) //now you can apply all property
 
