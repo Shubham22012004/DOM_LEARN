@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>chai or code  | DOM </title>
+</head>
+<body>
+  <ul class="language">
+    <li>Javascript</li>
+  </ul>
+</body>
+<script>
+  function addLanguage(langName){
+    const li = document.createElement("li");
+    li.innerHTML =langName;//innerHTML will traversed the entire tree
+    document.querySelector(`.language`).appendChild(li);
+  }
+
+  addLanguage("python");
+  addLanguage("typescript");
+
+
+  //an optmized way to add element is  =>  appendChile with createTextNode
+  function addLangOptimizedWay(langName){
+    const li = document.createElement('li');
+    li.appendChild(document.createTextNode(langName));
+    document.querySelector(".language").appendChild(li);//here we do not have reference
+  }
+  addLangOptimizedWay("go");
+
+  //Edit
+  const secondLang = document.querySelector("li:nth-child(2)");//it will select second lang i.e. python here we have reference of python thatwhy it is easy to use nth-child
+  const newli = document.createElement('li');
+  newli.textContent = "MOJO";
+  secondLang.replaceWith(newli); //replace mojo with python
+
+  //replace element 
+  const firstLang = document.querySelector("li:first-child");
+  firstLang.outerHTML = '<li> java</li>'; //replace JavaScript with java
+
+  //remove the element
+  const lastlang = document.querySelector('li:last-child');
+  lastlang.remove();  //remove go from browser window
+  
+
+</script>
+</html>
