@@ -1,0 +1,47 @@
+<!-- //JavaScript is => Synchronous and single threaded language(hence is slow compared to other)
+
+//Executon Context = > execute one line of code at one time  (callStack and memoryHeap)
+
+// Blocking Code ->  Block the Flow of Program -> Read File Sync
+
+// Non-Blocking => Do not block execution -> Read File Async
+
+//JS engine =>  Heap Memory + CallStack
+//fetch() linked with high Priority Queue and simple function use tasked queue and both queue attach with CallStack
+
+Handler is just like a function without name
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async woking</title>
+</head>
+<body>
+  
+  <h1>learning the async code</h1>
+  <button id="stop">  STOP  </button>
+  <script>
+    const changeText = function(){
+      let h1 = document.querySelector("h1");
+      h1.innerHTML = "the text will change after sometime using setTimeout funciton";
+    }
+
+    let setTimeoutFunc = setTimeout(changeText,2000);
+    //setTimeout still work even if we save it any variable
+    //here we pass the refernce of function not executing the function, if you execute it runs on the spot and return undefined to setTimeout(undefined, 2000);
+    //Result: The text changes immediately, and setTimeout doesn’t work the way you expect.
+
+    document.querySelector("#stop").addEventListener('click',function(){
+    clearTimeout(setTimeoutFunc)//onclick the button setTimeout fun will not work
+    console.log("just stopped setTimeout function");
+    //it will remove all callback from the queue from execution
+    })
+
+
+  </script>
+</body>
+</html>

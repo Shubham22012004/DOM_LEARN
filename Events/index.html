@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events learning</title>
+</head>
+<body>
+  <h2>Learning of Events</h2>
+  <ul id="image">
+    <li>
+      <img id="air" src="https://imgs.search.brave.com/GVcDP9cX1YLhjAXS0-gIVZzpPpmCYLlsOHfwIOt7VfU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9idXJz/dC5zaG9waWZ5Y2Ru/LmNvbS9waG90b3Mv/dHdvLXRvbmUtaW5r/LWNsb3VkLmpwZz93/aWR0aD0xMDAwJmZv/cm1hdD1wanBnJmV4/aWY9MCZpcHRjPTA" />
+    </li>
+    <li>
+      <img id="river" src="https://imgs.search.brave.com/DXyrqk1lnVF4ArRrR0YcbCogVVe2eDKW_EVwONzR7B4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aXN0b2NrcGhvdG8u/Y29tL3Jlc291cmNl/cy9pbWFnZXMvRnJl/ZVBob3Rvcy9GcmVl/LVBob3RvLTc0MHg0/OTItMTc0NDkxNTMz/My5qcGc" />
+    </li>
+    <li>
+      <img id="bird" src="https://imgs.search.brave.com/w2HND3H2u2ORdvuYc96qSZUj_BxcJM2mKSEhQ2E_04I/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA3LzQxLzcxLzkz/LzM2MF9GXzc0MTcx/OTM5NF9DOUJQM1li/aVhTSjdXc3BTREx0/S2RZeFpLS1dsZjBK/ei5qcGc" />
+    </li>
+    <li>
+      <img id="tree" src="https://imgs.search.brave.com/VumJ_cTw2tyiJwRhee456A3MqGFEkMLAnp_dn1zRzn8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuZnJlZWltYWdl/cy5jb20vc2xpZGVz/LzMxMzYzNDlmYjhl/YzRiZTRiNmU3NTI3/OGQ1MjEyZGVkLndl/YnA" />
+    </li>
+  </ul>
+  
+  <script>
+
+    // document.getElementById("river").onclick = function(){alert("not to touch")};
+    
+    document.getElementById('river').addEventListener('click', ()=>{alert("not to do that")}, false) //false is default
+
+    //events you need to study  => type, timestamp, defaulPrevented, target, toElement, srcElement(imp),currentTarget, clientX, Y, screenX, Y, altkey, ctrlkey etc...
+
+    document.getElementById("image").addEventListener('click',function(event){
+      console.log("inside the ul");
+    },true)
+
+    document.getElementById('river').addEventListener('click',function(event){
+      console.log("river is clicked");//this event propagation is called "bubbling" as on click river first console is "river is clicked" then "inside the ul"
+
+      event.stopImmediatePropagation(); //used to stop bublic
+    },true);
+    //when you put "true" at the place of "false" then that propagation is called "capturing" as "inside the ul" console first the "river is clicked"
+
+  </script>
+</body>
+</html>
