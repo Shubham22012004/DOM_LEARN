@@ -24,6 +24,10 @@ Handler is just like a function without name
   
   <h1>learning the async code</h1>
   <button id="stop">  STOP  </button>
+
+
+  <br><br><br>
+  
   <script>
     const changeText = function(){
       let h1 = document.querySelector("h1");
@@ -31,15 +35,40 @@ Handler is just like a function without name
     }
 
     let setTimeoutFunc = setTimeout(changeText,2000);
+    //setTimeout(function,time in millisecond)
     //setTimeout still work even if we save it any variable
     //here we pass the refernce of function not executing the function, if you execute it runs on the spot and return undefined to setTimeout(undefined, 2000);
     //Result: The text changes immediately, and setTimeout doesn’t work the way you expect.
 
     document.querySelector("#stop").addEventListener('click',function(){
-    clearTimeout(setTimeoutFunc)//onclick the button setTimeout fun will not work
+    clearTimeout(setTimeoutFunc)
+    //if you set up a delayed function using setTimeout(), but then decide you don’t want it to execute anymore, you can use clearTimeout() to cancel it.
+
+    //How does it work?
+    //When you call setTimeout(), it returns an ID (a unique identifier) for that timeout.
+
+    //You can store this ID and then pass it to clearTimeout() to cancel the timeout before it runs.
+    //clearTimeout(timeoutID)
+
     console.log("just stopped setTimeout function");
-    //it will remove all callback from the queue from execution
+   
     })
+
+    setInterval(console.log("Must be good to learn"),1000);
+    //this will print only one time as we directly execute the funtion
+    //setInterval(function , time)
+    let counter=0;
+    let setIntFun = setInterval(()=>{
+      console.log(counter++);
+    },500);//it will still execute even storing in variable
+    //we can pass fun like this or we can give the reference of function
+
+    setTimeout(()=>{clearInterval(setIntFun)},60000);
+    //clearInterval(setInterval_id)
+    //if we do not use arrow function then it will immediately execute the clearInterval fun
+    //If you've used setInterval() to repeat an action at regular intervals, you can use clearInterval() to cancel it and stop it from executing.
+
+
 
 
   </script>

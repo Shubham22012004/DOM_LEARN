@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>change BackgrooundColor using setInterval</title>
+</head>
+<body>
+  <button id="startColor">startColor</button>
+  <button id="stopColor">stopColor</button>
+
+  <script>
+    let setIntID;
+
+    function generateColor(){
+      let hex = '0123456789ABCDEF';
+      let color = "#";
+      for(let i=0; i<6; i++){
+        color += hex[Math.floor(Math.random()*16)];//this will take value from hex string and *16 to get upto 15 character
+        
+      }
+      return color;
+    }
+
+    document.querySelector("#startColor").addEventListener('click',()=>{
+              
+      setIntID = setInterval(()=>{
+        let generatedColor = generateColor();
+        document.querySelector('body').style.backgroundColor = generatedColor;
+        console.log(generatedColor);     
+      },1000)
+      
+    })
+
+    document.querySelector("#stopColor").addEventListener('click',()=>{
+      clearInterval(setIntID);
+      setIntID = null;
+    })
+    
+
+  </script>
+
+</body>
+</html>

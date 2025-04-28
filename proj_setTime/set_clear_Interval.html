@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SET interval PRAC</title>
+</head>
+<body>
+  <button id="startSetInterval">Start SETINTERVAL</button>
+  <button id="stopSetInterval">Stop SETINTERVAL</button>
+
+  <script>
+    let counter = 0, setInt_id;//use to pass in clearInterval()
+    document.querySelector("#startSetInterval").addEventListener('click',()=>{
+      setInt_id = setInterval(()=>{
+        console.log(counter++);
+      },2000);
+    });
+
+    document.querySelector("#stopSetInterval").addEventListener('click',()=>{
+      clearInterval(setInt_id);
+    })
+  </script>
+</body>
+</html>
